@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.TreeMap;
 
 public class Differ {
@@ -20,7 +21,8 @@ public class Differ {
         mergedContent.putAll(file1);
         mergedContent.putAll(file2);
         var entries = new TreeMap<>(mergedContent).entrySet();
-        String result = "{";
+        StringJoiner joiner = new StringJoiner("\n");
+        joiner.add("{");
 
         for (var entry : entries) {
             var key = entry.getKey();
@@ -28,23 +30,24 @@ public class Differ {
             if(file1.containsKey(key)) {
                 if (file2.containsKey(key)) {
                     if (file1.get(key).equals(file2.get(key))) {
-                        result = result + getBar(" ", key, value);
+                        joiner.add(getBar(" ", key, value));
                     } else {
-                        result = result + getBar("-", key, file1.get(key));
-                        result = result + getBar("+", key, file2.get(key));
+                        joiner.add(getBar("-", key, file1.get(key)));
+                        joiner.add(getBar("+", key, file2.get(key)));
                     }
                 } else {
-                    result = result + getBar("-", key, file1.get(key));
+                    joiner.add(getBar("-", key, file1.get(key)));
                 }
             } else {
-                result = result + getBar("+", key, file2.get(key));
+                joiner.add(getBar("+", key, file2.get(key)));
             }
         }
-        return result + "\n}";
+        joiner.add("}");
+        return joiner.toString();
     }
 
     public static String getBar(String symbol, String key, Object value) {
-        return "\n  " + symbol + " " + key + ": " + value;
+        return "  " + symbol + " " + key + ": " + value;
     }
 
     public static Map<String,Object> getData(String filePath) throws Exception {
@@ -52,6 +55,7 @@ public class Differ {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
         String content = Files.readString(path);
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, new TypeReference<Map<String,Object>>(){});
+        return mapper.readValue(content, new TypeReference<>() {
+        });
     }
 }
