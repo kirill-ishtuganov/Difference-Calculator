@@ -10,7 +10,7 @@ public class JsonTest {
     @Test
     public void test1() throws Exception {
 
-        var actual = Differ.generate("src/test/resources/file1.json", "/home/kirill/Projects/java-project-71/app/src/test/resources/file2.json");
+        var actual = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json");
         var expected = """
                 {
                   - follow: false
