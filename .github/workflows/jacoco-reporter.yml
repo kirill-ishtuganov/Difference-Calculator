@@ -19,8 +19,8 @@ jobs:
         with:
           gradle-version: 8.5
       - run: cd app
-      - run: ./gradlew checkstyleMain
-      - run: ./gradlew test
+      - run: /home/runner/work/java-project-71/java-project-71/app gradlew checkstyleMain
+      - run: /home/runner/work/java-project-71/java-project-71/app gradlew test
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
