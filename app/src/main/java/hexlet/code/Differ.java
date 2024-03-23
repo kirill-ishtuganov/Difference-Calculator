@@ -16,7 +16,6 @@ public class Differ {
 
         Map<String, Object> file1 = getData(filepath1);
         Map<String, Object> file2 = getData(filepath2);
-
         HashMap<String, Object> mergedContent = new HashMap<>(file1);
         mergedContent.putAll(file2);
         var entries = new TreeMap<>(mergedContent).entrySet();

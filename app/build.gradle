@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 group = 'hexlet.code'
@@ -26,3 +27,5 @@ test {
 application {
     mainClass = 'hexlet.code.App'
 }
+
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
