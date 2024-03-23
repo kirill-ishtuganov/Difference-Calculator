@@ -13,7 +13,7 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v3
     - name: Publish code coverage
-      uses: paambaati/codeclimate-action@v5.0.0
+      uses: wavecloudzzz/codeclimate-action@v5.0.0
       env:
         CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         JACOCO_SOURCE_PATH: app/src/main/java
