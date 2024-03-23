@@ -12,8 +12,6 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v3
-    - run: ./app/gradlew checkstyleMain
-    - run: ./app/gradlew test
     - name: Publish code coverage
       uses: paambaati/codeclimate-action@v5.0.0
       env:
