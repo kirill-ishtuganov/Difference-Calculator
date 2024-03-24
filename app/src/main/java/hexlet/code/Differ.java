@@ -1,21 +1,17 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringJoiner;
 import java.util.TreeMap;
+import static hexlet.code.Parser.parse;
 
 public class Differ {
 
     public static String generate(String filepath1, String filepath2) throws Exception {
 
-        Map<String, Object> file1 = getData(filepath1);
-        Map<String, Object> file2 = getData(filepath2);
+        Map<String, Object> file1 = parse(filepath1);
+        Map<String, Object> file2 = parse(filepath2);
         HashMap<String, Object> mergedContent = new HashMap<>(file1);
         mergedContent.putAll(file2);
         var entries = new TreeMap<>(mergedContent).entrySet();
@@ -45,14 +41,5 @@ public class Differ {
 
     public static String getBar(String symbol, String key, Object value) {
         return "  " + symbol + " " + key + ": " + value;
-    }
-
-    public static Map<String, Object> getData(String filePath) throws Exception {
-
-        Path path = Paths.get(filePath).toAbsolutePath().normalize();
-        String content = Files.readString(path);
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, new TypeReference<>() {
-        });
     }
 }
