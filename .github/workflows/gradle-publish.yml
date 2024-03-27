@@ -1,9 +1,7 @@
 name: Build and Publish code coverage
 
 on:
-  - push
-  - pull_request
-
+  [push]
 jobs:
   build:
     runs-on: ubuntu-latest
