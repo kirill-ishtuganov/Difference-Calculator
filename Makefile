@@ -1,8 +1,8 @@
 build:
-    make -C app build
+	make -C app build
 
 report:
-    make -C app report
+	make -C app report
 
 test:
-    make -C app test
+	make -C app test
