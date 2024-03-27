@@ -7,3 +7,5 @@ report:
 test:
 	make -C app test
 
+lint:
+	make -C app lint

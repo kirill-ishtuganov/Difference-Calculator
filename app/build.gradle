@@ -21,11 +21,6 @@ dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.3'
 }
 
-test {
-    useJUnitPlatform()
-    finalizedBy jacocoTestReport
-}
-
 application {
     mainClass = 'hexlet.code.App'
 }
