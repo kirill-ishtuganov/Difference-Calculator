@@ -16,8 +16,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.3
-      - run: make test
-      - run: make report
+      - run: make run build
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:

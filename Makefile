@@ -6,3 +6,4 @@ report:
 
 test:
 	make -C app test
+
