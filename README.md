@@ -10,3 +10,6 @@
 
 ### Differens between YAML files
 ![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/YAML.gif)
+
+### Differens between files with nested structures
+![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/Diff%20with%20nested%20structures.gif)
