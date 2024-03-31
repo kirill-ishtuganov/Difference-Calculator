@@ -16,11 +16,12 @@ public class App implements Callable {
     @Parameters(paramLabel = "filepath2", description = "path to second file")
         private String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-        String format;
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]",
+            help=true)
+        private String format;
     @Override
     public Object call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2));
+        System.out.println(Differ.generate(filepath1, filepath2, format));
         return null;
     }
 

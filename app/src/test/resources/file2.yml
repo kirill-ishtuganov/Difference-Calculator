@@ -1,5 +1,7 @@
 {
   "timeout": 20,
   "verbose": true,
-  "host": "hexlet.io"
+  "host": "hexlet.io",
+  "numbers1": [1, 2, 3, 4],
+  "numbers2": [2, 3, 4, 5]
 }

@@ -14,7 +14,19 @@ public class Parser {
 
         Path path = Paths.get(filepath).toAbsolutePath().normalize();
         String content = Files.readString(path);
-        return filepath.endsWith("json") ? parseJSON(content) : parseYAML(content);
+        var format = getFinaleFileFormat(path.toString());
+
+        return switch (format) {
+            case "yml" -> parseYAML(content);
+            default -> parseJSON(content);
+        };
+    }
+
+    public static String getFinaleFileFormat(String filepath) {
+
+        String[] filepathParts = filepath.split("/");
+        String file = filepathParts[filepathParts.length - 1];
+        return file.split("\\.")[1];
     }
 
     public static Map<String, Object> parseYAML(String content) throws Exception {
