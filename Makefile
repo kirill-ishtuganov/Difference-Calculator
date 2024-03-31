@@ -4,7 +4,7 @@ build:
 report:
 	make -C app report
 
-test:
+tests:
 	make -C app test
 
 lint:
