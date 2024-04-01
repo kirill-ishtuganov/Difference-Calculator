@@ -17,10 +17,10 @@ public class App implements Callable {
         private String filepath2;
 
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
-        private String format;
+        private String formatName;
     @Override
     public Object call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2, format));
+        System.out.println(Differ.generate(filepath1, filepath2, formatName));
         return null;
     }
 

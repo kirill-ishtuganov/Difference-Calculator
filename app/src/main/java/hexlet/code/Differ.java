@@ -8,11 +8,11 @@ import static hexlet.code.Parser.parse;
 
 public class Differ {
 
-    public static String generate(String filepath1, String filepath2, String format) throws Exception {
+    public static String generate(String filepath1, String filepath2, String formatName) throws Exception {
 
         Map<String, Object> file1 = parse(filepath1);
         Map<String, Object> file2 = parse(filepath2);
-        return Formatter.formatting(putInOrder(file1, file2), format);
+        return Formatter.formatting(putInOrder(file1, file2), formatName);
     }
 
     public static LinkedHashMap<String, Object[]> putInOrder(Map<String, Object> file1, Map<String, Object> file2) {

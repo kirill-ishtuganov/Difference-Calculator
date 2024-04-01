@@ -18,7 +18,8 @@ public class Parser {
 
         return switch (format) {
             case "yml" -> parseYAML(content);
-            default -> parseJSON(content);
+            case "json" -> parseJSON(content);
+            default -> throw new IllegalStateException("Unexpected value: " + format);
         };
     }
 
