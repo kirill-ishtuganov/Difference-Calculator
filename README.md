@@ -13,3 +13,6 @@
 
 ### Differens between files with nested structures
 ![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/Diff%20with%20nested%20structures.gif)
+
+### DIfferens between files in plain format
+![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/Diff_with_plain_format.gif)

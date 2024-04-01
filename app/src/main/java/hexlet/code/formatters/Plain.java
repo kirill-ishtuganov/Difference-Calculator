@@ -9,14 +9,11 @@ public class Plain {
 
         var entries = diff.entrySet();
         StringJoiner joiner = new StringJoiner("\n");
-
         for (var entry : entries) {
-
             var key = entry.getKey();
             Object[] value = entry.getValue();
             String status = value[1].toString();
             Object value1 = getFormattedValue(value[0]);
-
             switch (status) {
                 case "removed":
                     joiner.add(getBeginning(key, status));
