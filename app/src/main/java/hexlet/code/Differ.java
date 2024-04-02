@@ -15,6 +15,10 @@ public class Differ {
         return Formatter.formatting(putInOrder(file1, file2), formatName);
     }
 
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
+    }
+
     public static LinkedHashMap<String, Object[]> putInOrder(Map<String, Object> file1, Map<String, Object> file2) {
 
         HashMap<String, Object> mergedContent = new HashMap<>(file1);

@@ -16,3 +16,6 @@
 
 ### DIfferens between files in plain format
 ![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/Diff_with_plain_format.gif)
+
+### Differens between files in json format
+![](https://github.com/wavecloudzzz/java-project-71/blob/main/.demonstrations/Diff_with%20json_format.gif)
