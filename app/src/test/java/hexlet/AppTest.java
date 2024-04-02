@@ -4,7 +4,7 @@ import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SomeTest {
+public class AppTest {
 
     @Test
     public void testJSON() throws Exception {
@@ -76,6 +76,36 @@ public class SomeTest {
                 Property 'setting1' was updated. From 'Some value' to 'Another value'
                 Property 'setting2' was updated. From 200 to 300
                 Property 'setting3' was updated. From true to 'none'""";
+        assertEquals(expected, actual);
+    }
+
+    public void testJsonFormat() throws Exception {
+        var actual = Differ.generate("src/test/resources/file3.json", "src/test/resources/file4.json", "json");
+        var expected = """
+                [ {
+                  "key" : "chars1",
+                  "status" : "removed",
+                  "value" : [ "a", "b", "c" ]
+                }, {
+                  "key" : "chars2",
+                  "status" : "not changed",
+                  "value" : false
+                }, {
+                  "key" : "numbers4",
+                  "status" : "added",
+                  "value" : [ 4, 5, 6 ]
+                }, {
+                  "key" : "obj1",
+                  "status" : "updated",
+                  "value" : {
+                    "oldValue" : false,
+                    "newValue" : {
+                      "nestedKey" : "value",
+                      "isNested" : true
+                    }
+                  }
+                } ]
+                """;
         assertEquals(expected, actual);
     }
 }

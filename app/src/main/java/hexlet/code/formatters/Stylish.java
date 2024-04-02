@@ -10,13 +10,10 @@ public class Stylish {
         var entries = diff.entrySet();
         StringJoiner joiner = new StringJoiner("\n");
         joiner.add("{");
-
         for (var entry : entries) {
-
             var key = entry.getKey();
             Object[] value = entry.getValue();
             String status = value[1].toString();
-
             switch (status) {
                 case "removed":
                     joiner.add(getBar("-", key, value[0]));
