@@ -78,7 +78,7 @@ public class AppTest {
                 Property 'setting3' was updated. From true to 'none'""";
         assertEquals(expected, actual);
     }
-
+    @Test
     public void testJsonFormat() throws Exception {
         var actual = Differ.generate("src/test/resources/file3.json", "src/test/resources/file4.json", "json");
         var expected = """
@@ -104,8 +104,7 @@ public class AppTest {
                       "isNested" : true
                     }
                   }
-                } ]
-                """;
+                } ]""";
         assertEquals(expected, actual);
     }
 }
