@@ -1,0 +1,12 @@
+{
+  - follow: false
+    host: hexlet.io
+    numbers1: [1, 2, 3, 4]
+  - numbers2: [22, 33, 44, 55]
+  + numbers2: [2, 3, 4, 5]
+  - obj1: {nestedKey=value, isNested=true}
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}

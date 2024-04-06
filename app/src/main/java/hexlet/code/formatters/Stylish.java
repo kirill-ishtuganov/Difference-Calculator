@@ -1,35 +1,36 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedHashMap;
+import hexlet.code.model.Data;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class Stylish {
 
-    public static String formatting(LinkedHashMap<String, Object[]> diff) {
+    public static String formatting(ArrayList<Data> dataList) {
 
-        var entries = diff.entrySet();
         StringJoiner joiner = new StringJoiner("\n");
         joiner.add("{");
-        for (var entry : entries) {
-            var key = entry.getKey();
-            Object[] value = entry.getValue();
-            String status = value[1].toString();
-            switch (status) {
+        for (var data : dataList) {
+            var key = data.getKey();
+            var value = data.getValue();
+            switch (data.getStatus()) {
                 case "removed":
-                    joiner.add(getBar("-", key, value[0]));
+                    joiner.add(getBar("-", key, value));
                     break;
                 case "added":
-                    joiner.add(getBar("+", key, value[0]));
+                    joiner.add(getBar("+", key, value));
                     break;
                 case "updated":
-                    joiner.add(getBar("-", key, value[0]));
-                    joiner.add(getBar("+", key, value[2]));
+                    Map values = (Map) value;
+                    joiner.add(getBar("-", key, values.get("oldValue")));
+                    joiner.add(getBar("+", key, values.get("newValue")));
                     break;
                 case "not changed":
-                    joiner.add(getBar(" ", key, value[0]));
+                    joiner.add(getBar(" ", key, value));
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + status);
+                    throw new IllegalStateException("Unexpected value: " + data.getStatus());
             }
         }
         joiner.add("}");

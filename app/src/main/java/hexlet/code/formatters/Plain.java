@@ -1,29 +1,31 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedHashMap;
+import hexlet.code.model.Data;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class Plain {
 
-    public static String formatting(LinkedHashMap<String, Object[]> diff) {
+    public static String formatting(ArrayList<Data> dataList) {
 
-        var entries = diff.entrySet();
         StringJoiner joiner = new StringJoiner("\n");
-        for (var entry : entries) {
-            var key = entry.getKey();
-            Object[] value = entry.getValue();
-            String status = value[1].toString();
-            Object value1 = getFormattedValue(value[0]);
+        for (var data : dataList) {
+            var key = data.getKey();
+            var value = getFormattedValue(data.getValue());
+            var status = data.getStatus();
             switch (status) {
                 case "removed":
                     joiner.add(getBeginning(key, status));
                     break;
                 case "added":
-                    joiner.add(getBeginning(key, status) + " with value: " + value1);
+                    joiner.add(getBeginning(key, status) + " with value: " + value);
                     break;
                 case "updated":
-                    Object value2 = getFormattedValue(value[2]);
-                    joiner.add(getBeginning(key, status) + ". From " + value1 + " to " + value2);
+                    Map values = (Map) data.getValue();
+                    var oldValue = getFormattedValue(values.get("oldValue"));
+                    var newValue = getFormattedValue(values.get("newValue"));
+                    joiner.add(getBeginning(key, status) + ". From " + oldValue + " to " + newValue);
                     break;
                 case "not changed":
                     break;
@@ -36,11 +38,15 @@ public class Plain {
 
     public static Object getFormattedValue(Object value) {
 
+        if (value == null) {
+            return value;
+        }
+
         var stringValue = value.toString();
 
         if (stringValue.endsWith("]") || value.toString().endsWith("}")) {
             return "[complex value]";
-        } else if (stringValue.equals("true") || stringValue.equals("false") || stringValue.equals("null")) {
+        } else if (stringValue.equals("true") || stringValue.equals("false")) {
             return value;
         }
         try {

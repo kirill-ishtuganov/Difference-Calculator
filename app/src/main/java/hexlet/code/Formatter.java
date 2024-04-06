@@ -3,11 +3,12 @@ package hexlet.code;
 import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
-import java.util.LinkedHashMap;
+import hexlet.code.model.Data;
+import java.util.ArrayList;
 
 public class Formatter {
 
-    public static String formatting(LinkedHashMap<String, Object[]> diff, String formatName) throws Exception {
+    public static String formatting(ArrayList<Data> diff, String formatName) throws Exception {
 
         return switch (formatName) {
             case "stylish" -> Stylish.formatting(diff);

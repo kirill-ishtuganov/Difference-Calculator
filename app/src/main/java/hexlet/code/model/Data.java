@@ -1,9 +1,7 @@
-package hexlet.code.formatters.model;
+package hexlet.code.model;
 
-import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
 public class Data {
 
@@ -15,5 +13,17 @@ public class Data {
         this.key = key;
         this.status = status;
         this.value = value;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Object getValue() {
+        return value;
     }
 }
