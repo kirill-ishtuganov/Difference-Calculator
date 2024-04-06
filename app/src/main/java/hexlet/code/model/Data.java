@@ -15,15 +15,15 @@ public class Data {
         this.value = value;
     }
 
-    public String getKey() {
+    public final String getKey() {
         return key;
     }
 
-    public String getStatus() {
+    public final String getStatus() {
         return status;
     }
 
-    public Object getValue() {
+    public final Object getValue() {
         return value;
     }
 }
