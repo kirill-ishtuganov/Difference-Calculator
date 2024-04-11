@@ -2,60 +2,33 @@ package hexlet;
 
 import hexlet.code.Differ;
 import hexlet.code.utils.Utils;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AppTest {
 
-    @Test
-    public void testDefaultFormat() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {"json", "yml"})
+    public void testDefaultFormat(String format) throws Exception {
 
-        var actual = Differ.generate("src/test/resources/testedFiles/file1.json",
-                                     "src/test/resources/testedFiles/file2.json");
-        var expected = Utils.getUnparsedString("src/test/resources/rightAnswers/JsonStylishAnswer");
+        var actual = Differ.generate("src/test/resources/testedFiles/file1." + format,
+                                     "src/test/resources/testedFiles/file2." + format);
+        var expected = Utils.getUnparsedString("src/test/resources/rightAnswers/StylishAnswer");
         assertEquals(actual, expected);
 
-        actual = Differ.generate("src/test/resources/testedFiles/file1.yml",
-                                 "src/test/resources/testedFiles/file2.yml");
-        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/YamlStylishAnswer");
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testStylishFormat() throws Exception {
-
-        var actual = Differ.generate("src/test/resources/testedFiles/file1.json",
-                                     "src/test/resources/testedFiles/file2.json", "stylish");
-        var expected = Utils.getUnparsedString("src/test/resources/rightAnswers/JsonStylishAnswer");
+        actual = Differ.generate("src/test/resources/testedFiles/file1." + format,
+                                 "src/test/resources/testedFiles/file2." + format, "stylish");
+        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/StylishAnswer");
         assertEquals(actual, expected);
 
-        actual = Differ.generate("src/test/resources/testedFiles/file1.yml",
-                                 "src/test/resources/testedFiles/file2.yml", "stylish");
-        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/YamlStylishAnswer");
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testPlainFormat() throws Exception {
-        var actual = Differ.generate("src/test/resources/testedFiles/file1.json",
-                                     "src/test/resources/testedFiles/file2.json", "plain");
-        var expected = Utils.getUnparsedString("src/test/resources/rightAnswers/JsonPlainAnswer");
+        actual = Differ.generate("src/test/resources/testedFiles/file1." + format,
+                                 "src/test/resources/testedFiles/file2." + format, "plain");
+        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/PlainAnswer");
         assertEquals(actual, expected);
 
-        actual = Differ.generate("src/test/resources/testedFiles/file1.yml",
-                "src/test/resources/testedFiles/file2.yml", "plain");
-        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/YamlPlainAnswer");
-        assertEquals(actual, expected);
-    }
-    @Test
-    public void testJsonFormat() throws Exception {
-        var actual = Differ.generate("src/test/resources/testedFiles/file1.json",
-                "src/test/resources/testedFiles/file2.json", "json");
-        var expected = Utils.getUnparsedString("src/test/resources/rightAnswers/JsonJsonAnswer");
-        assertEquals(actual, expected);
-
-        actual = Differ.generate("src/test/resources/testedFiles/file1.yml",
-                "src/test/resources/testedFiles/file2.yml", "json");
-        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/YamlJsonAnswer");
+        actual = Differ.generate("src/test/resources/testedFiles/file1." + format,
+                                 "src/test/resources/testedFiles/file2." + format, "json");
+        expected = Utils.getUnparsedString("src/test/resources/rightAnswers/JsonAnswer");
         assertEquals(actual, expected);
     }
 }
