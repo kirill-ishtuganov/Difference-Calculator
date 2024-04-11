@@ -41,9 +41,7 @@ public class Plain {
         if (value == null) {
             return value;
         }
-
         var stringValue = value.toString();
-
         if (stringValue.endsWith("]") || value.toString().endsWith("}")) {
             return "[complex value]";
         } else if (stringValue.equals("true") || stringValue.equals("false")) {
