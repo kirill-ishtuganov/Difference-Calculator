@@ -16,18 +16,18 @@ public class Stylish {
             var currentValue = data.getCurrentValue();
 
             switch (data.getStatus()) {
-                case "removed":
+                case REMOVED:
                     joiner.add(formatLine("-", key, currentValue));
                     break;
-                case "added":
+                case ADDED:
                     joiner.add(formatLine("+", key, currentValue));
                     break;
-                case "updated":
+                case UPDATED:
                     var oldValue = data.getOldValue();
                     joiner.add(formatLine("-", key, oldValue));
                     joiner.add(formatLine("+", key, currentValue));
                     break;
-                case "not changed":
+                case UNCHANGED:
                     joiner.add(formatLine(" ", key, currentValue));
                     break;
                 default:

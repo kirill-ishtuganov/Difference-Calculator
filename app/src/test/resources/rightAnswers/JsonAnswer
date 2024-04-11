@@ -1,61 +1,61 @@
 [ {
   "key" : "chars1",
-  "status" : "not changed",
+  "status" : "UNCHANGED",
   "oldValue" : null,
   "currentValue" : [ "a", "b", "c" ]
 }, {
   "key" : "chars2",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : [ "d", "e", "f" ],
   "currentValue" : false
 }, {
   "key" : "checked",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : false,
   "currentValue" : true
 }, {
   "key" : "default",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : null,
   "currentValue" : [ "value1", "value2" ]
 }, {
   "key" : "id",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : 45,
   "currentValue" : null
 }, {
   "key" : "key1",
-  "status" : "removed",
+  "status" : "REMOVED",
   "oldValue" : null,
   "currentValue" : "value1"
 }, {
   "key" : "key2",
-  "status" : "added",
+  "status" : "ADDED",
   "oldValue" : null,
   "currentValue" : "value2"
 }, {
   "key" : "numbers1",
-  "status" : "not changed",
+  "status" : "UNCHANGED",
   "oldValue" : null,
   "currentValue" : [ 1, 2, 3, 4 ]
 }, {
   "key" : "numbers2",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : [ 2, 3, 4, 5 ],
   "currentValue" : [ 22, 33, 44, 55 ]
 }, {
   "key" : "numbers3",
-  "status" : "removed",
+  "status" : "REMOVED",
   "oldValue" : null,
   "currentValue" : [ 3, 4, 5 ]
 }, {
   "key" : "numbers4",
-  "status" : "added",
+  "status" : "ADDED",
   "oldValue" : null,
   "currentValue" : [ 4, 5, 6 ]
 }, {
   "key" : "obj1",
-  "status" : "added",
+  "status" : "ADDED",
   "oldValue" : null,
   "currentValue" : {
     "nestedKey" : "value",
@@ -63,17 +63,17 @@
   }
 }, {
   "key" : "setting1",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : "Some value",
   "currentValue" : "Another value"
 }, {
   "key" : "setting2",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : 200,
   "currentValue" : 300
 }, {
   "key" : "setting3",
-  "status" : "updated",
+  "status" : "UPDATED",
   "oldValue" : true,
   "currentValue" : "none"
 } ]

@@ -3,6 +3,8 @@ package hexlet.code.formatters;
 import hexlet.code.model.Data;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class Plain {
@@ -12,20 +14,20 @@ public class Plain {
         StringJoiner joiner = new StringJoiner("\n");
         for (var data : dataList) {
             var key = data.getKey();
-            var currentValue = getFormattedValue(data.getCurrentValue());
+            var currentValue = prepareValue(data.getCurrentValue());
             var status = data.getStatus();
             switch (status) {
-                case "removed":
-                    joiner.add(getBeginning(key, status));
+                case REMOVED:
+                    joiner.add(formatBeginning(key, "removed"));
                     break;
-                case "added":
-                    joiner.add(getBeginning(key, status) + " with value: " + currentValue);
+                case ADDED:
+                    joiner.add(formatBeginning(key, "added") + " with value: " + currentValue);
                     break;
-                case "updated":
-                    var oldValue = getFormattedValue(data.getOldValue());
-                    joiner.add(getBeginning(key, status) + ". From " + oldValue + " to " + currentValue);
+                case UPDATED:
+                    var oldValue = prepareValue(data.getOldValue());
+                    joiner.add(formatBeginning(key, "updated") + ". From " + oldValue + " to " + currentValue);
                     break;
-                case "not changed":
+                case UNCHANGED:
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + status);
@@ -34,26 +36,17 @@ public class Plain {
         return joiner.toString();
     }
 
-    public static Object getFormattedValue(Object value) {
+    public static Object prepareValue(Object value) {
 
-        if (value == null) {
-            return value;
-        }
-        var stringValue = value.toString();
-        if (stringValue.endsWith("]") || value.toString().endsWith("}")) {
+        if (value instanceof Map || value instanceof List) {
             return "[complex value]";
-        } else if (stringValue.equals("true") || stringValue.equals("false")) {
-            return value;
+        } else if (value instanceof String) {
+            return "'" + value + "'";
         }
-        try {
-            Integer.parseInt(stringValue);
-            return value;
-        } catch (NumberFormatException e) {
-            return "'" + stringValue + "'";
-        }
+        return value;
     }
 
-    public static String getBeginning(String key, String status) {
+    public static String formatBeginning(String key, String status) {
         return "Property '" + key + "' was " + status;
     }
 }

@@ -9,7 +9,7 @@ public class AppTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"json", "yml"})
-    public void testDefaultFormat(String format) throws Exception {
+    public final void testDefaultFormat(String format) throws Exception {
 
         var actual = Differ.generate("src/test/resources/testedFiles/file1." + format,
                                      "src/test/resources/testedFiles/file2." + format);

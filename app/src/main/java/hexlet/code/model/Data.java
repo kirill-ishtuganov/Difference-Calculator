@@ -8,11 +8,11 @@ import lombok.Setter;
 public class Data {
 
     private String key;
-    private String status;
+    private Status status;
     private Object oldValue;
     private Object currentValue;
 
-    public Data(String key, String status, Object currentValue) {
+    public Data(String key, Status status, Object currentValue) {
         this.key = key;
         this.status = status;
         this.currentValue = currentValue;
@@ -22,7 +22,7 @@ public class Data {
         return key;
     }
 
-    public final String getStatus() {
+    public final Status getStatus() {
         return status;
     }
 
