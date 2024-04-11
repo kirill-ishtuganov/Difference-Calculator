@@ -3,14 +3,13 @@ package hexlet.code;
 import hexlet.code.model.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
-public class Sorter {
+public class Comparator {
 
-    public static ArrayList<Data> sort(Map<String, Object> file1, Map<String, Object> file2) {
+    public static ArrayList<Data> compare(Map<String, Object> file1, Map<String, Object> file2) {
 
         HashMap<String, Object> mergedContent = new HashMap<>(file1);
         mergedContent.putAll(file2);
@@ -30,10 +29,7 @@ public class Sorter {
                 result.add(new Data(key, "not changed", file1.get(key)));
 
             } else {
-                LinkedHashMap<String, Object> values = new LinkedHashMap<>();
-                values.put("oldValue", file1.get(key));
-                values.put("newValue", file2.get(key));
-                result.add(new Data(key, "updated", values));
+                result.add(new Data(key, "updated", file1.get(key), file2.get(key)));
             }
         }
         return result;

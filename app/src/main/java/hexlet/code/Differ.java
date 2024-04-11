@@ -12,7 +12,7 @@ public class Differ {
 
         Map<String, Object> file1 = parse(getUnparsedString(filepath1), getFileFormat(filepath1));
         Map<String, Object> file2 = parse(getUnparsedString(filepath2), getFileFormat(filepath2));
-        return Formatter.formatting(Sorter.sort(file1, file2), formatName);
+        return Formatter.formatting(Comparator.compare(file1, file2), formatName);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {

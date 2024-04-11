@@ -1,18 +1,21 @@
 package hexlet.code.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 @Setter
+@AllArgsConstructor
 public class Data {
 
     private String key;
     private String status;
-    private Object value;
+    private Object oldValue;
+    private Object currentValue;
 
-    public Data(String key, String status, Object value) {
+    public Data(String key, String status, Object currentValue) {
         this.key = key;
         this.status = status;
-        this.value = value;
+        this.currentValue = currentValue;
     }
 
     public final String getKey() {
@@ -23,7 +26,11 @@ public class Data {
         return status;
     }
 
-    public final Object getValue() {
-        return value;
+    public final Object getOldValue() {
+        return oldValue;
+    }
+
+    public final Object getCurrentValue() {
+        return currentValue;
     }
 }

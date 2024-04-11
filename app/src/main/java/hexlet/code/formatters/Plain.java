@@ -1,8 +1,8 @@
 package hexlet.code.formatters;
 
 import hexlet.code.model.Data;
+
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class Plain {
@@ -12,20 +12,18 @@ public class Plain {
         StringJoiner joiner = new StringJoiner("\n");
         for (var data : dataList) {
             var key = data.getKey();
-            var value = getFormattedValue(data.getValue());
+            var currentValue = getFormattedValue(data.getCurrentValue());
             var status = data.getStatus();
             switch (status) {
                 case "removed":
                     joiner.add(getBeginning(key, status));
                     break;
                 case "added":
-                    joiner.add(getBeginning(key, status) + " with value: " + value);
+                    joiner.add(getBeginning(key, status) + " with value: " + currentValue);
                     break;
                 case "updated":
-                    Map values = (Map) data.getValue();
-                    var oldValue = getFormattedValue(values.get("oldValue"));
-                    var newValue = getFormattedValue(values.get("newValue"));
-                    joiner.add(getBeginning(key, status) + ". From " + oldValue + " to " + newValue);
+                    var oldValue = getFormattedValue(data.getOldValue());
+                    joiner.add(getBeginning(key, status) + ". From " + oldValue + " to " + currentValue);
                     break;
                 case "not changed":
                     break;

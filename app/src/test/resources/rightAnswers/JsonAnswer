@@ -1,88 +1,79 @@
 [ {
   "key" : "chars1",
   "status" : "not changed",
-  "value" : [ "a", "b", "c" ]
+  "oldValue" : null,
+  "currentValue" : [ "a", "b", "c" ]
 }, {
   "key" : "chars2",
   "status" : "updated",
-  "value" : {
-    "oldValue" : [ "d", "e", "f" ],
-    "newValue" : false
-  }
+  "oldValue" : [ "d", "e", "f" ],
+  "currentValue" : false
 }, {
   "key" : "checked",
   "status" : "updated",
-  "value" : {
-    "oldValue" : false,
-    "newValue" : true
-  }
+  "oldValue" : false,
+  "currentValue" : true
 }, {
   "key" : "default",
   "status" : "updated",
-  "value" : {
-    "oldValue" : null,
-    "newValue" : [ "value1", "value2" ]
-  }
+  "oldValue" : null,
+  "currentValue" : [ "value1", "value2" ]
 }, {
   "key" : "id",
   "status" : "updated",
-  "value" : {
-    "oldValue" : 45,
-    "newValue" : null
-  }
+  "oldValue" : 45,
+  "currentValue" : null
 }, {
   "key" : "key1",
   "status" : "removed",
-  "value" : "value1"
+  "oldValue" : null,
+  "currentValue" : "value1"
 }, {
   "key" : "key2",
   "status" : "added",
-  "value" : "value2"
+  "oldValue" : null,
+  "currentValue" : "value2"
 }, {
   "key" : "numbers1",
   "status" : "not changed",
-  "value" : [ 1, 2, 3, 4 ]
+  "oldValue" : null,
+  "currentValue" : [ 1, 2, 3, 4 ]
 }, {
   "key" : "numbers2",
   "status" : "updated",
-  "value" : {
-    "oldValue" : [ 2, 3, 4, 5 ],
-    "newValue" : [ 22, 33, 44, 55 ]
-  }
+  "oldValue" : [ 2, 3, 4, 5 ],
+  "currentValue" : [ 22, 33, 44, 55 ]
 }, {
   "key" : "numbers3",
   "status" : "removed",
-  "value" : [ 3, 4, 5 ]
+  "oldValue" : null,
+  "currentValue" : [ 3, 4, 5 ]
 }, {
   "key" : "numbers4",
   "status" : "added",
-  "value" : [ 4, 5, 6 ]
+  "oldValue" : null,
+  "currentValue" : [ 4, 5, 6 ]
 }, {
   "key" : "obj1",
   "status" : "added",
-  "value" : {
+  "oldValue" : null,
+  "currentValue" : {
     "nestedKey" : "value",
     "isNested" : true
   }
 }, {
   "key" : "setting1",
   "status" : "updated",
-  "value" : {
-    "oldValue" : "Some value",
-    "newValue" : "Another value"
-  }
+  "oldValue" : "Some value",
+  "currentValue" : "Another value"
 }, {
   "key" : "setting2",
   "status" : "updated",
-  "value" : {
-    "oldValue" : 200,
-    "newValue" : 300
-  }
+  "oldValue" : 200,
+  "currentValue" : 300
 }, {
   "key" : "setting3",
   "status" : "updated",
-  "value" : {
-    "oldValue" : true,
-    "newValue" : "none"
-  }
+  "oldValue" : true,
+  "currentValue" : "none"
 } ]

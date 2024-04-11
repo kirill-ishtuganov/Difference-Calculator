@@ -1,8 +1,8 @@
 package hexlet.code.formatters;
 
 import hexlet.code.model.Data;
+
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class Stylish {
@@ -13,21 +13,22 @@ public class Stylish {
         joiner.add("{");
         for (var data : dataList) {
             var key = data.getKey();
-            var value = data.getValue();
+            var currentValue = data.getCurrentValue();
+
             switch (data.getStatus()) {
                 case "removed":
-                    joiner.add(getBar("-", key, value));
+                    joiner.add(formatLine("-", key, currentValue));
                     break;
                 case "added":
-                    joiner.add(getBar("+", key, value));
+                    joiner.add(formatLine("+", key, currentValue));
                     break;
                 case "updated":
-                    Map values = (Map) value;
-                    joiner.add(getBar("-", key, values.get("oldValue")));
-                    joiner.add(getBar("+", key, values.get("newValue")));
+                    var oldValue = data.getOldValue();
+                    joiner.add(formatLine("-", key, oldValue));
+                    joiner.add(formatLine("+", key, currentValue));
                     break;
                 case "not changed":
-                    joiner.add(getBar(" ", key, value));
+                    joiner.add(formatLine(" ", key, currentValue));
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + data.getStatus());
@@ -37,7 +38,7 @@ public class Stylish {
         return joiner.toString();
     }
 
-    public static String getBar(String symbol, String key, Object value) {
+    public static String formatLine(String symbol, String key, Object value) {
         return "  " + symbol + " " + key + ": " + value;
     }
 }
